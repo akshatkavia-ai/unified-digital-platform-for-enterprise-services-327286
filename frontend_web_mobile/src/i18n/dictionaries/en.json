@@ -1,0 +1,29 @@
+{
+  "app": {
+    "name": "Unified Digital Platform",
+    "tagline": "Enterprise services portal"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "applications": "Applications",
+    "inspections": "Inspections",
+    "documents": "Documents",
+    "helpdesk": "Helpdesk",
+    "admin": "Admin",
+    "settings": "Settings"
+  },
+  "common": {
+    "search": "Search",
+    "notifications": "Notifications",
+    "language": "Language",
+    "comingSoon": "Coming soon"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to the portal UI shell."
+  },
+  "health": {
+    "title": "Backend health check",
+    "description": "This calls the backend root endpoint."
+  }
+}

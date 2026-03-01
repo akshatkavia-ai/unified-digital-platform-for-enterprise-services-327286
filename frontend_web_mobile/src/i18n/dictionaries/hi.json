@@ -1,0 +1,29 @@
+{
+  "app": {
+    "name": "एकीकृत डिजिटल प्लेटफ़ॉर्म",
+    "tagline": "एंटरप्राइज़ सेवाएँ पोर्टल"
+  },
+  "nav": {
+    "dashboard": "डैशबोर्ड",
+    "applications": "आवेदन",
+    "inspections": "निरीक्षण",
+    "documents": "दस्तावेज़",
+    "helpdesk": "हेल्पडेस्क",
+    "admin": "एडमिन",
+    "settings": "सेटिंग्स"
+  },
+  "common": {
+    "search": "खोजें",
+    "notifications": "सूचनाएँ",
+    "language": "भाषा",
+    "comingSoon": "जल्द आ रहा है"
+  },
+  "dashboard": {
+    "title": "डैशबोर्ड",
+    "welcome": "पोर्टल UI शेल में आपका स्वागत है।"
+  },
+  "health": {
+    "title": "बैकएंड हेल्थ चेक",
+    "description": "यह बैकएंड रूट एंडपॉइंट को कॉल करता है।"
+  }
+}
