@@ -57,7 +57,15 @@ export class ApiClient {
     return `${trimmedBase}${trimmedPath}`;
   }
 
-  private async request<T>(path: string, init?: RequestInit): Promise<T> {
+  /**
+   * PUBLIC_INTERFACE
+   * Low-level request helper used by higher-level methods.
+   *
+   * Notes:
+   * - Parses JSON when possible, but falls back to string for non-JSON responses.
+   * - Throws ApiError on non-2xx.
+   */
+  async requestJson<T>(path: string, init?: RequestInit): Promise<T> {
     const res = await fetch(this.url(path), {
       ...init,
       headers: await buildHeaders(this.config, init?.headers),
@@ -84,6 +92,6 @@ export class ApiClient {
    * Current OpenAPI exposes only this endpoint.
    */
   async healthCheck(): Promise<unknown> {
-    return this.request<unknown>("/", { method: "GET" });
+    return this.requestJson<unknown>("/", { method: "GET" });
   }
 }

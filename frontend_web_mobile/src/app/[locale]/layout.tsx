@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { PortalShell } from "@/components/portal/PortalShell";
+import { PortalApp } from "@/components/portal/PortalApp";
 import { DEFAULT_LOCALE, isLocale, type Locale, SUPPORTED_LOCALES } from "@/i18n/config";
 import { createT, getDictionary } from "@/i18n/server";
 
@@ -26,13 +26,9 @@ export default async function LocaleLayout({
   const dict = await getDictionary(locale);
   const t = createT(dict);
 
-  // Static-export friendly: do not call next/headers() in layouts.
-  // We default highlight to the locale home link.
-  const activePath = `/${locale}`;
-
   return (
-    <PortalShell locale={locale} t={t} activePath={activePath}>
+    <PortalApp locale={locale} t={t}>
       {children}
-    </PortalShell>
+    </PortalApp>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type { Locale } from "@/i18n/config";
+import { useAuth } from "@/lib/auth/context";
 import { cn } from "@/lib/ui/cn";
 
 type NavItem = { href: string; label: string; key: string };
@@ -16,6 +17,8 @@ export function PortalShell({
   activePath: string;
   children: React.ReactNode;
 }) {
+  const { status, user, logout } = useAuth();
+
   const nav: NavItem[] = [
     { href: `/${locale}`, label: t("nav.dashboard"), key: "dashboard" },
     { href: `/${locale}/applications`, label: t("nav.applications"), key: "applications" },
@@ -44,6 +47,29 @@ export function PortalShell({
           </div>
 
           <div className="flex items-center gap-2">
+            {status === "authenticated" ? (
+              <>
+                <div className="hidden rounded-lg bg-slate-50 px-3 py-1.5 text-xs text-slate-700 ring-1 ring-slate-200 sm:block">
+                  <span className="font-semibold">User</span>{" "}
+                  <span className="font-mono">{user?.user_id?.slice(0, 8) ?? "—"}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => logout()}
+                  className="focus-ring rounded-lg px-3 py-1.5 text-sm font-medium text-slate-700 ring-1 ring-slate-200/80 transition hover:bg-slate-50"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                className="focus-ring rounded-lg px-3 py-1.5 text-sm font-medium text-slate-700 ring-1 ring-slate-200/80 transition hover:bg-slate-50"
+                href={`/${locale}/auth/login`}
+              >
+                Sign in
+              </Link>
+            )}
+
             <Link
               className={cn(
                 "focus-ring rounded-lg px-3 py-1.5 text-sm font-medium text-slate-700 ring-1 ring-slate-200/80 transition hover:bg-slate-50",
